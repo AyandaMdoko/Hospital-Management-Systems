@@ -1,0 +1,345 @@
+
+/* USER MANAGEMENT FORMS */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.staff-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+}
+
+.staff-form-grid .form-group {
+    min-width: 0;
+}
+
+.staff-form-grid .form-group-full-width,
+.staff-form-grid .form-actions {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 9px;
+    color: #43566e;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    max-width: 550px;
+    padding: 12px 14px;
+    border: 1px solid #d4deea;
+    border-radius: 6px;
+    background: white;
+    color: #263445;
+    font-size: 14px;
+    outline: none;
+}
+
+.staff-form-grid .form-group input,
+.staff-form-grid .form-group select,
+.staff-form-grid .form-group textarea {
+    max-width: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2878c7;
+    box-shadow: 0 0 0 3px rgba(40, 120, 199, 0.1);
+}
+
+@media (max-width: 640px) {
+    .staff-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .staff-form-grid .form-group-full-width,
+    .staff-form-grid .form-actions {
+        grid-column: auto;
+    }
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.primary-btn,
+.cancel-btn {
+    display: inline-block;
+    padding: 11px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.primary-btn {
+    background: #2878c7;
+    color: white;
+    border: none;
+}
+
+.primary-btn:hover {
+    background: #1766ad;
+}
+
+.cancel-btn {
+    background: #eaf2fb;
+    color: #43566e;
+}
+
+
+/* ACCOUNT CREATION MESSAGES */
+
+.form-message {
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+.error-message {
+    background: #fdeaea;
+    color: #c03939;
+    border: 1px solid #f5c6c6;
+}
+
+.credential-card {
+    max-width: 700px;
+}
+
+.credential-card > p {
+    color: #43566e;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.credential-item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 15px;
+    margin-bottom: 12px;
+    background: #f4f7fb;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.credential-item strong {
+    color: #172f4d;
+}
+
+.credential-item span {
+    color: #2878c7;
+    font-weight: 600;
+}
+
+.credential-warning {
+    padding: 12px;
+    background: #fff5df;
+    color: #9a681c !important;
+    border-radius: 6px;
+    margin-top: 18px;
+}
+
+/* STAFF ROLE BADGES */
+
+.status-badge.doctor {
+    background: #e2efff;
+    color: #2878c7;
+}
+
+.status-badge.nurse {
+    background: #f0e8ff;
+    color: #8054bd;
+}
+
+.status-badge.receptionist {
+    background: #fff0df;
+    color: #a86a20;
+}
+
+.success-message {
+    background: #e2f6ed;
+    color: #259a64;
+    border: 1px solid #bce8d1;
+}
+
+/* edit staff form */
+
+.form-group textarea {
+    width: 100%;
+    max-width: 550px;
+    padding: 12px 14px;
+    border: 1px solid #d4deea;
+    border-radius: 6px;
+    background: white;
+    color: #263445;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    resize: vertical;
+    outline: none;
+}
+
+.form-group textarea:focus {
+    border-color: #2878c7;
+    box-shadow: 0 0 0 3px rgba(40, 120, 199, 0.1);
+}
+
+.staff-status-form {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.activate-btn,
+.deactivate-btn {
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.activate-btn {
+    background: #e2f6ed;
+    color: #259a64;
+}
+
+.deactivate-btn {
+    background: #fdeaea;
+    color: #c03939;
+}
+
+.activate-btn:hover {
+    background: #c9ebdb;
+}
+
+.deactivate-btn:hover {
+    background: #f9d5d5;
+}
+
+
+/* ==========================================
+   USER MANAGEMENT ACTIONS
+========================================== */
+
+.user-status-form {
+    display: inline-block;
+}
+
+.user-action-protected {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #edf1f5;
+    color: #68798c;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.user-manage-staff-link {
+    display: inline-block;
+    padding: 9px 13px;
+    border-radius: 6px;
+    background: #e2efff;
+    color: #2878c7;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.user-manage-staff-link:hover {
+    background: #cfe3fa;
+}
+
+
+
+/* ==========================================
+   USER PASSWORD RESET
+========================================== */
+
+.reset-password-form {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.reset-password-btn {
+    background: #fff0df;
+    color: #a86a20;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.reset-password-btn:hover {
+    background: #ffe0b8;
+}
+
+.reset-credentials-card {
+    background: #f8fbff;
+    border: 1px solid #cfe3fa;
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 25px;
+}
+
+.reset-credentials-card h3 {
+    color: #172f4d;
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.reset-credentials-card p {
+    color: #61748b;
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.reset-credential-field {
+    margin-bottom: 15px;
+}
+
+.reset-credential-field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #43566e;
+    margin-bottom: 8px;
+}
+
+.reset-credential-field input {
+    width: 100%;
+    max-width: 550px;
+    padding: 12px 14px;
+    border: 1px solid #d4deea;
+    border-radius: 6px;
+    background: #ffffff;
+    font-size: 14px;
+    color: #263445;
+}
+
+.reset-credentials-card .reset-warning {
+    color: #a86a20;
+    font-weight: 600;
+    margin-bottom: 0;
+}
