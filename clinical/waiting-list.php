@@ -1,4 +1,4 @@
-
+<?php include_once __DIR__ . '/databases/waiting-list-process.php'; ?>
 
 <main class="clinical-main">
     <div class="clinical-page-heading">
