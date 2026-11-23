@@ -1,0 +1,60 @@
+/* Add these styles to the END of assets/css/clinical-dashboard.css. */
+.clinical-queue-filters {
+    display: grid;
+    grid-template-columns: minmax(220px, 2fr) minmax(170px, 1fr) auto;
+    align-items: end;
+    gap: 15px;
+    margin-bottom: 22px;
+    padding: 16px;
+    background: #f7faff;
+    border: 1px solid #e4edf7;
+    border-radius: 10px;
+}
+.clinical-queue-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.clinical-queue-field label { color: #536c85; font-size: 12px; font-weight: 750; }
+.clinical-queue-field input,
+.clinical-queue-field select {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #ccdbe9;
+    border-radius: 8px;
+    padding: 11px 12px;
+    font: inherit;
+    font-size: 13px;
+    background: white;
+    color: #203a56;
+}
+.clinical-queue-field input:focus-visible,
+.clinical-queue-field select:focus-visible,
+.clinical-queue-button:focus-visible,
+.clinical-queue-clear:focus-visible { outline: 3px solid #8abbea; outline-offset: 2px; }
+.clinical-queue-controls { display: flex; gap: 9px; align-items: center; }
+.clinical-queue-button,
+.clinical-queue-clear {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 41px;
+    box-sizing: border-box;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 750;
+    white-space: nowrap;
+}
+.clinical-queue-button { border: 1px solid #1c70b3; background: #1c70b3; color: #fff; cursor: pointer; }
+.clinical-queue-button:hover { background: #165b93; color: #fff; }
+.clinical-queue-clear { border: 1px solid #ccdbe9; background: white; color: #446987; }
+.clinical-queue-clear:hover { background: #edf5fd; }
+.clinical-queue-pages { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 20px 2px 12px; color: #70849a; font-size: 12px; }
+.clinical-queue-pages > div { display: flex; gap: 9px; }
+@media (max-width: 1000px) {
+    .clinical-queue-filters { grid-template-columns: minmax(180px, 1fr) minmax(150px, 1fr); }
+    .clinical-queue-controls { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+    .clinical-queue-filters { grid-template-columns: 1fr; }
+    .clinical-queue-controls { grid-column: auto; }
+    .clinical-queue-pages { align-items: flex-start; flex-direction: column; }
+}
