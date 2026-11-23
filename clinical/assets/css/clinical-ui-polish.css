@@ -1,0 +1,435 @@
+/* ================================================================
+   HMS — Shared Clinical Workspace | Compact UI polish
+   For Doctor and Professional Nurse pages only.
+   Load AFTER assets/css/clinical-dashboard.css.
+
+   Preserves: active/hover sidebar states, mobile menu JavaScript,
+   dashboard queries, patient table, waiting-list filters and role guard.
+   ================================================================ */
+
+:root {
+    --clinical-polish-navy: #102b4e;
+    --clinical-polish-blue: #216caa;
+    --clinical-polish-ink: #213a55;
+    --clinical-polish-muted: #728398;
+    --clinical-polish-border: #e2eaf3;
+    --clinical-polish-bg: #f5f8fc;
+    --clinical-polish-header: 64px;
+    --clinical-polish-sidebar: 228px;
+}
+
+/* Scope the changes to clinical pages; leave Receptionist/Admin intact. */
+body:has(.clinical-layout) {
+    background: var(--clinical-polish-bg);
+    color: var(--clinical-polish-ink);
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+}
+
+.clinical-layout {
+    min-height: 100vh;
+    background: var(--clinical-polish-bg);
+}
+
+/* ---------- Smaller, cleaner topbar ---------- */
+.clinical-layout .clinical-topbar {
+    height: var(--clinical-polish-header);
+    min-height: var(--clinical-polish-header);
+    padding: 0 22px;
+    background: var(--clinical-polish-navy);
+    box-shadow: 0 2px 9px rgba(16, 43, 78, .09);
+}
+.clinical-topbar .topbar-left { gap: 12px; min-width: 0; }
+.clinical-topbar .clinical-brand { gap: 10px; min-width: 0; }
+.clinical-topbar .brand-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    font-size: 17px;
+    flex: 0 0 34px;
+}
+.clinical-topbar .brand-text h1 {
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: -.1px;
+    font-weight: 700;
+}
+.clinical-topbar .brand-text p {
+    font-size: 10.5px;
+    line-height: 1.3;
+}
+.clinical-topbar .user-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+}
+.clinical-topbar .user-meta strong { font-size: 12px; line-height: 1.25; }
+.clinical-topbar .user-meta span { font-size: 10.5px; line-height: 1.3; }
+.clinical-topbar .sidebar-toggle {
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    font-size: 20px;
+    transition: background-color .16s ease;
+}
+
+/* ---------- Shared sidebar links: SAME size for anchors and spans ---------- */
+.clinical-layout .clinical-sidebar {
+    top: var(--clinical-polish-header);
+    bottom: 0;
+    width: var(--clinical-polish-sidebar);
+    padding: 15px 11px;
+    background: #fff;
+    border-right: 1px solid var(--clinical-polish-border);
+}
+.clinical-sidebar .sidebar-heading {
+    margin: 2px 0 16px;
+    padding: 0 10px;
+}
+.clinical-sidebar .sidebar-heading span {
+    font-size: 13px;
+    line-height: 1.35;
+}
+.clinical-sidebar .sidebar-heading small {
+    font-size: 10px;
+    line-height: 1.35;
+}
+.clinical-sidebar .sidebar-section-title {
+    margin: 17px 0 9px;
+    padding: 0 10px;
+    font-size: 10px;
+}
+.clinical-sidebar .sidebar-nav { gap: 3px; }
+
+/* Explicitly target <a> and <span> so global link styles cannot make
+   Dashboard / Waiting List / Change Password / Logout larger than "Soon" items. */
+.clinical-sidebar .sidebar-nav > a.sidebar-link,
+.clinical-sidebar .sidebar-nav > span.sidebar-link {
+    display: flex;
+    align-items: center;
+    min-height: 39px;
+    padding: 8px 10px;
+    gap: 10px;
+    border-radius: 8px;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    font-size: 12.5px !important;
+    font-weight: 500;
+    line-height: 1.35 !important;
+    letter-spacing: 0;
+    text-decoration: none;
+}
+.clinical-sidebar .sidebar-link .nav-text {
+    min-width: 0;
+    font-size: 12.5px !important;
+    font-weight: inherit;
+    line-height: 1.35 !important;
+    letter-spacing: 0;
+}
+.clinical-sidebar .sidebar-link .nav-icon {
+    width: 17px;
+    flex: 0 0 17px;
+    font-size: 14px;
+    text-align: center;
+}
+.clinical-sidebar .sidebar-link small {
+    flex: 0 0 auto;
+    font-size: 9px;
+    line-height: 1.3;
+    padding: 3px 6px;
+}
+.clinical-sidebar .sidebar-link.active {
+    font-weight: 650;
+    color: #175e9b;
+    background: #e7f1fc;
+    box-shadow: inset 3px 0 0 #287ac0;
+}
+.clinical-sidebar .sidebar-nav > a.sidebar-link:not(.active):hover {
+    background: #eef5fd;
+    color: #165f9e;
+}
+.clinical-sidebar .sidebar-nav > a.sidebar-link:not(.active):active {
+    background: #e1ecf9;
+}
+.clinical-sidebar .sidebar-link.disabled {
+    opacity: 1;
+    color: #9ca9b6;
+    cursor: default;
+}
+.clinical-sidebar .sidebar-link.disabled:hover {
+    background: transparent;
+    color: #9ca9b6;
+}
+.clinical-sidebar .sidebar-nav > a.sidebar-link.logout-link:hover {
+    background: #fff0f0;
+    color: #a52e3b;
+}
+.clinical-sidebar .sidebar-nav > a.sidebar-link:focus-visible {
+    outline: 2px solid #3e8ac9;
+    outline-offset: 2px;
+}
+
+/* ---------- Dashboard structure: ACTUAL classes in clinical/dashboard.php ---------- */
+.clinical-layout .clinical-main {
+    display: block;
+    margin-left: var(--clinical-polish-sidebar);
+    padding: calc(var(--clinical-polish-header) + 24px) 26px 30px;
+    min-height: calc(100vh - 64px);
+    width: calc(100% - var(--clinical-polish-sidebar));
+    min-width: 0;
+    box-sizing: border-box;
+}
+.clinical-main .clinical-page-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+.clinical-main .clinical-eyebrow {
+    color: #5885b0;
+    font-size: 10px;
+    line-height: 1.3;
+    font-weight: 700;
+    letter-spacing: 1.05px;
+    margin-bottom: 7px;
+}
+.clinical-main .clinical-page-heading h1 {
+    margin: 0 0 6px;
+    color: #193650;
+    font-size: clamp(21px, 2.2vw, 25px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -.4px;
+}
+.clinical-main .clinical-page-heading p {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--clinical-polish-muted);
+}
+.clinical-main .clinical-read-only {
+    flex: 0 0 auto;
+    color: #4c7192;
+    background: #e9f2fb;
+    border: 1px solid #dae8f6;
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 10.5px;
+    font-weight: 600;
+}
+
+/* Four small equal-height KPI cards with restrained emphasis. */
+.clinical-main .clinical-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 14px;
+    margin-bottom: 19px;
+}
+.clinical-main .clinical-stat {
+    position: relative;
+    min-width: 0;
+    background: #fff;
+    border: 1px solid var(--clinical-polish-border);
+    border-radius: 11px;
+    padding: 16px 17px;
+    box-shadow: 0 2px 9px rgba(30, 57, 86, .035);
+    transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+.clinical-main .clinical-stat::before {
+    content: "";
+    position: absolute;
+    top: 15px;
+    right: 16px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #9ab5d1;
+}
+.clinical-main .clinical-stat:nth-child(1)::before { background: #d7a33d; }
+.clinical-main .clinical-stat:nth-child(2)::before { background: #4f98d0; }
+.clinical-main .clinical-stat:nth-child(4)::before { background: #55b58d; }
+.clinical-main .clinical-stat:hover {
+    transform: translateY(-2px);
+    border-color: #cbdff0;
+    box-shadow: 0 7px 18px rgba(32, 65, 96, .085);
+}
+.clinical-main .clinical-stat span {
+    display: block;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 600;
+    color: #718399;
+}
+.clinical-main .clinical-stat strong {
+    display: block;
+    margin: 9px 0 6px;
+    font-size: 27px;
+    line-height: 1.1;
+    font-weight: 750;
+    color: #183957;
+}
+.clinical-main .clinical-stat small {
+    display: block;
+    font-size: 11px;
+    line-height: 1.4;
+    color: #8997a6;
+}
+
+/* Warning about older active visits — smaller, easier to read. */
+.clinical-main .clinical-notice {
+    margin: 0 0 18px;
+    padding: 11px 14px;
+    border-radius: 9px;
+    border: 1px solid #f0dfb1;
+    border-left: 3px solid #dba343;
+    background: #fffaf0;
+    color: #765b2f;
+    font-size: 12px;
+    line-height: 1.55;
+}
+.clinical-main .clinical-notice strong { font-weight: 700; }
+
+/* Dashboard's active visits container and table. */
+.clinical-main .clinical-card {
+    background: #fff;
+    border: 1px solid var(--clinical-polish-border);
+    border-radius: 11px;
+    padding: 19px 20px 11px;
+    margin-bottom: 0;
+    box-shadow: 0 2px 9px rgba(30, 57, 86, .035);
+}
+.clinical-main .clinical-card-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.clinical-main .clinical-card-heading h2 {
+    margin: 0 0 5px;
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 700;
+    color: #203d59;
+}
+.clinical-main .clinical-card-heading p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--clinical-polish-muted);
+}
+.clinical-main .clinical-note-pill {
+    flex: 0 0 auto;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: #f0f5fa;
+    color: #6d8399;
+    font-size: 10px;
+    font-weight: 600;
+}
+.clinical-main .clinical-table-scroll {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.clinical-main .clinical-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 670px;
+    font-size: 12px;
+}
+.clinical-main .clinical-table thead th {
+    padding: 10px 11px;
+    border-bottom: 1px solid var(--clinical-polish-border);
+    background: #f7f9fc;
+    color: #78899b;
+    text-align: left;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .1px;
+    white-space: nowrap;
+}
+.clinical-main .clinical-table tbody td {
+    padding: 12px 11px;
+    border-bottom: 1px solid #eef2f6;
+    font-size: 12px;
+    line-height: 1.45;
+    color: #354c62;
+    vertical-align: middle;
+}
+.clinical-main .clinical-table tbody td strong { font-size: inherit; font-weight: 650; }
+.clinical-main .clinical-table tbody tr:hover { background: #f5f9ff; }
+.clinical-main .clinical-table tbody tr:last-child td { border-bottom: 0; }
+.clinical-main .clinical-status {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10.5px;
+    font-weight: 650;
+    padding: 4px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+.clinical-main .clinical-status.clinical-badge-waiting { color: #99670a; background: #fff2d9; }
+.clinical-main .clinical-status.clinical-badge-progress { color: #1c639a; background: #e5f2fe; }
+.clinical-main .clinical-empty { padding: 27px 12px !important; text-align: center; color: #8796a5; }
+.clinical-main .clinical-bottom-note {
+    margin: 14px 1px 0;
+    color: #8593a2;
+    font-size: 11.5px;
+    line-height: 1.55;
+}
+.clinical-layout .clinical-footer {
+    margin-left: var(--clinical-polish-sidebar);
+    padding: 14px 24px 19px;
+    border-top: 1px solid var(--clinical-polish-border);
+    color: #91a0af;
+    background: transparent;
+    font-size: 11px;
+    text-align: center;
+}
+
+/* ---------- Layout adaptation ---------- */
+@media (max-width: 1150px) {
+    .clinical-main .clinical-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+    .clinical-layout .clinical-sidebar {
+        left: calc(-1 * (var(--clinical-polish-sidebar) + 12px));
+        transition: left .23s ease;
+        box-shadow: 8px 0 22px rgba(12, 32, 54, .07);
+    }
+    .clinical-layout .clinical-sidebar.open { left: 0; }
+    .clinical-layout .sidebar-overlay.show { top: var(--clinical-polish-header); }
+    .clinical-layout .clinical-main {
+        margin-left: 0;
+        width: 100%;
+        padding: calc(var(--clinical-polish-header) + 23px) 20px 28px;
+    }
+    .clinical-layout .clinical-footer { margin-left: 0; }
+}
+@media (max-width: 590px) {
+    .clinical-layout .clinical-topbar { padding: 0 13px; }
+    .clinical-topbar .brand-text h1 { font-size: 12.5px; }
+    .clinical-topbar .brand-text p { font-size: 10px; }
+    .clinical-topbar .brand-icon { width: 30px; height: 30px; flex-basis: 30px; }
+    .clinical-layout .clinical-main { padding: calc(var(--clinical-polish-header) + 19px) 14px 24px; }
+    .clinical-main .clinical-page-heading { align-items: flex-start; }
+    .clinical-main .clinical-read-only { display: none; }
+    .clinical-main .clinical-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .clinical-main .clinical-stat { padding: 13px 12px; }
+    .clinical-main .clinical-stat strong { font-size: 24px; }
+    .clinical-main .clinical-stat small { font-size: 10px; }
+    .clinical-main .clinical-card { padding: 15px 12px 9px; }
+    .clinical-main .clinical-card-heading { flex-wrap: wrap; }
+}
+@media (max-width: 380px) {
+    .clinical-main .clinical-stats { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .clinical-main .clinical-stat,
+    .clinical-layout .clinical-sidebar { transition: none; }
+}
