@@ -1,0 +1,224 @@
+/* Patient Medical Records only; does not overwrite dashboard or sidebar styles. */
+.pm-page {
+    font-size: 13px;
+}
+
+.pm-card {
+    margin-bottom: 17px;
+    padding-bottom: 19px;
+}
+
+.pm-search {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.pm-search > div {
+    flex: 1 1 240px;
+}
+
+.pm-search label {
+    display: block;
+    margin-bottom: 6px;
+    color: #38516d;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.pm-search input {
+    width: 100%;
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid #d3deeb;
+    border-radius: 8px;
+    background: white;
+    color: #1d3551;
+    font-size: 13px;
+}
+
+.pm-search input:focus-visible {
+    outline: 2px solid #276dba;
+    outline-offset: 2px;
+}
+
+.pm-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 8px 13px;
+    border: 1px solid #ccdaea;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 650;
+    text-decoration: none;
+    transition: background 0.16s ease, border-color 0.16s ease;
+}
+
+.pm-primary {
+    border-color: #1e5fa8;
+    background: #1e5fa8;
+    color: #fff;
+}
+
+.pm-primary:hover {
+    background: #164b86;
+}
+
+.pm-secondary {
+    background: #f4f8fc;
+    color: #1a568e;
+}
+
+.pm-secondary:hover {
+    border-color: #91b8de;
+    background: #e5f0fb;
+}
+
+.pm-result-count {
+    margin-bottom: 10px;
+    color: #657b91;
+    font-size: 12px;
+}
+
+.pm-table {
+    width: 100%;
+}
+
+.pm-table td,
+.pm-table th {
+    padding: 11px 10px;
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.pm-table .pm-btn {
+    white-space: nowrap;
+}
+
+.pm-pages {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.pm-pages a {
+    color: #1a568e;
+}
+
+.pm-footnote {
+    margin-top: 12px;
+    color: #657b91;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.pm-facts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+}
+
+.pm-facts div {
+    min-width: 0;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f6f9fc;
+}
+
+.pm-facts dt {
+    margin-bottom: 6px;
+    color: #72869c;
+    font-size: 11px;
+}
+
+.pm-facts dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+    color: #203e5d;
+    font-weight: 650;
+}
+
+.pm-history {
+    display: grid;
+    gap: 10px;
+}
+
+.pm-history-entry {
+    overflow: hidden;
+    border: 1px solid #e0e8f1;
+    border-radius: 9px;
+    background: #fff;
+}
+
+.pm-history-entry summary {
+    padding: 13px 15px;
+    cursor: pointer;
+    color: #294961;
+    font-size: 12px;
+}
+
+.pm-history-entry summary:hover {
+    background: #f5f9fd;
+}
+
+.pm-notes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    padding: 0 15px 15px;
+}
+
+.pm-notes-grid > div {
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #e8edf4;
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.pm-notes-grid h3 {
+    margin: 0 0 8px;
+    color: #647b91;
+    font-size: 11px;
+}
+
+.pm-notes-grid p {
+    margin: 0;
+    overflow-wrap: anywhere;
+    line-height: 1.65;
+    white-space: normal;
+}
+
+.pm-empty {
+    color: #657b91;
+    font-size: 12px;
+}
+
+.pm-wrap {
+    min-width: 180px;
+    white-space: normal !important;
+}
+
+@media (max-width: 800px) {
+    .pm-facts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 570px) {
+    .pm-facts {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .pm-notes-grid {
+        grid-template-columns: 1fr;
+    }
+}
