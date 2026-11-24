@@ -6,7 +6,7 @@
  * Only the author can save or complete their own in-progress consultation.
  */
 require_once __DIR__ . '/../includes/clinical-auth.php';
-require_once __DIR__ . '/../config/dbconnect.php';
+require_once __DIR__ . '/../../config/dbconnect.php';
 header('Cache-Control: no-store, private');
 header('Pragma: no-cache');
 $page_title = 'Patient Consultation';
@@ -273,6 +273,6 @@ $isActiveVisit = in_array($visit['visit_status'], ['Waiting', 'In Consultation']
 $canStart = $isActiveVisit && !$active;
 $canEdit = $ownActive && $visit['visit_status'] === 'In Consultation';
 
-require_once __DIR__ . '/includes/header.php';
-require_once __DIR__ . '/includes/sidebar.php';
+require_once __DIR__ . '/../includes/header.php';
+require_once __DIR__ . '/../includes/sidebar.php';
 ?>
