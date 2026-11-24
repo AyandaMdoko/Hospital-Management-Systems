@@ -1,5 +1,3 @@
-
-
 <?php
 
 // Check login, account status, staff status,
