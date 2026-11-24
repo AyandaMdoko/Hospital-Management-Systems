@@ -1,6 +1,10 @@
 <?php include_once __DIR__ . '/databases/waiting-list-process.php'; ?>
 
-
+<!--
+    This page is part of the Shared Clinical Workspace.
+    It displays a list of patients who have been checked in by Receptionists and are waiting for care or currently in consultation.
+    Clinical staff can filter the list, search for specific patients or visits, and open visits to start or review consultations.
+-->
 <main class="clinical-main">
     <div class="clinical-page-heading">
         <div>
@@ -11,6 +15,7 @@
         <span class="clinical-read-only">Clinical queue</span>
     </div>
 
+    <!-- Summary statistics for active visits -->
     <section class="clinical-stats" aria-label="Active visit statistics">
         <div class="clinical-stat">
             <span>Active Visits</span>
@@ -42,6 +47,8 @@
         </div>
     <?php endif; ?>
 
+
+    <!-- Main table of active visits with search and filter options -->
     <section class="clinical-card">
         <div class="clinical-card-heading">
             <div>
@@ -52,6 +59,7 @@
             <span class="clinical-note-pill">Start / Review consultations</span>
         </div>
 
+        <!-- Search and filter form for active visits -->
         <form class="clinical-queue-filters" method="get" action="/clinical/waiting-list.php" role="search">
             <div class="clinical-queue-field">
                 <label for="clinical-visit-search">Search patient or visit</label>
@@ -114,6 +122,7 @@
             </table>
         </div>
 
+        <!-- Pagination controls for multiple pages of visits -->
         <?php if ($totalPages > 1): ?>
             <nav class="clinical-queue-pages" aria-label="Waiting list pages">
                 <span>Page <?= $page ?> of <?= $totalPages ?></span>
