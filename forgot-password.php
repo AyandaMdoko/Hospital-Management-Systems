@@ -30,11 +30,11 @@
                 <i class="bi bi-key"></i>
             </div>
             <h1 id="forgot-password-title">Forgot your password?</h1>
-            <p class="forgot-password-description">Don't worry. Enter your registered email address and we'll help you reset your password.</p>
+            <p class="forgot-password-description">Don't worry. Enter your registered username and we'll help you reset your password.</p>
 
             <form class="forgot-password-form" action="#" method="post">
-                <label for="reset-email">Registered email address</label>
-                <input type="email" id="reset-email" name="email" placeholder="Enter your email address" autocomplete="email" required>
+                <label for="reset-email">Registered username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" autocomplete="username" required>
                 <button type="submit" class="reset-link-button">Send Reset Link <span aria-hidden="true">→</span></button>
             </form>
 
