@@ -1,8 +1,8 @@
 <?php
 /**
- * Shared Clinical Waiting List (read-only).
+ * Shared Clinical Waiting List (with consultation navigation).
  * For active Doctors and Professional Nurses only.
- * Do not start consultations or update visit statuses from this page.
+ * Consultation actions run only inside the guarded clinical/consultation.php.
  */
 require_once __DIR__ . '/../includes/clinical-auth.php';
 require_once __DIR__ . '/../../config/dbconnect.php';
