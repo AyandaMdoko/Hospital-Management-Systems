@@ -1,4 +1,5 @@
 
+<?php include_once __DIR__ . '/databases/consultation-process.php'; ?>
 
 <main class="clinical-main clinical-consultation-page">
     <div class="clinical-page-heading">
