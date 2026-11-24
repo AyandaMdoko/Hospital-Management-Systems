@@ -1,6 +1,5 @@
 <?php include_once __DIR__ . '/databases/patient-details-process.php'; ?>
 
-
 <main class="clinical-main pm-page">
     <div class="clinical-page-heading">
         <div>
