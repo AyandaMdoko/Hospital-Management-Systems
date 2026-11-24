@@ -1,5 +1,6 @@
 <?php include_once __DIR__ . '/databases/waiting-list-process.php'; ?>
 
+
 <main class="clinical-main">
     <div class="clinical-page-heading">
         <div>
@@ -7,7 +8,7 @@
             <h1>Patient Waiting List</h1>
             <p>Patients checked in by Receptionists who are waiting for care or currently in consultation.</p>
         </div>
-        <span class="clinical-read-only">Read-only overview</span>
+        <span class="clinical-read-only">Clinical queue</span>
     </div>
 
     <section class="clinical-stats" aria-label="Active visit statistics">
@@ -48,7 +49,7 @@
                 <p><?= $matchingVisits ?> matching visit<?= $matchingVisits === 1 ? '' : 's' ?>.
                     Oldest waiting patients appear first.</p>
             </div>
-            <span class="clinical-note-pill">Read-only</span>
+            <span class="clinical-note-pill">Start / Review consultations</span>
         </div>
 
         <form class="clinical-queue-filters" method="get" action="/clinical/waiting-list.php" role="search">
@@ -85,6 +86,7 @@
                         <th>Visit Category</th>
                         <th>Visit Status</th>
                         <th>Checked In By</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -102,10 +104,11 @@
                                     </span>
                                 </td>
                                 <td><?= clinicalQueueEscape($visit['checked_in_by']) ?></td>
+                                <td><a class="cc-queue-action" href="/clinical/consultation.php?visit_id=<?= (int) $visit['visit_id'] ?>">Open Visit</a></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <tr><td class="clinical-empty" colspan="7">No active visits match the selected filters.</td></tr>
+                        <tr><td class="clinical-empty" colspan="8">No active visits match the selected filters.</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>
@@ -127,8 +130,8 @@
     </section>
 
     <p class="clinical-bottom-note">
-        Clinical actions will be added in the next stage. Starting a consultation must link the
-        consultation to the correct Visit ID and update the visit status securely.
+        Select Open Visit to review clinical history, start a visit-linked consultation, or continue your own in-progress consultation.
+        Consultations and visit statuses are updated only after an authorized confirmation.
     </p>
 </main>
 <?php require_once __DIR__ . '/includes/footer.php'; ?>
