@@ -16,7 +16,7 @@ $current_role = $_SESSION['role'] ?? 'Clinical Staff';
     <link rel="stylesheet" href="./assets/css/clinical-ui-polish.css"> 
     <link rel="stylesheet" href="./assets/css/clinical-waiting-list-additions.css">
     <link rel="stylesheet" href="./assets/css/clinical-consultation.css"> 
-    <link rel="stylesheet" href="/assets/css/clinical-patient-records.css?">
+    <link rel="stylesheet" href="./assets/css/clinical-patient-records.css?">
 
 </head>
 <body>
