@@ -25,12 +25,12 @@ function clinicalNavActive($pages = []) {
             <span class="nav-icon">☰</span>
             <span class="nav-text">Patient Waiting List</span>
         </a>
-
-        <span class="sidebar-link disabled">
+        
+        <a href="/clinical/patients.php"
+        class="sidebar-link <?= clinicalNavActive(['patients.php', 'patient-details.php']) ?>">
             <span class="nav-icon">🗂</span>
             <span class="nav-text">Patient Medical Records</span>
-            <small>Soon</small>
-        </span>
+        </a>
 
         <span class="sidebar-link disabled">
             <span class="nav-icon">✎</span>
