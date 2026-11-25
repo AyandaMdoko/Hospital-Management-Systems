@@ -1,4 +1,4 @@
-
+<?php include __DIR__ . '/databases/record-observations-process.php'; ?>
 
 <main class="clinical-main ob-page">
   <div class="clinical-page-heading">
