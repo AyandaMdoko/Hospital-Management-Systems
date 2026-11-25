@@ -38,11 +38,13 @@ function clinicalNavActive($pages = []) {
             <small>Soon</small>
         </span>
 
-        <span class="sidebar-link disabled">
+     
+        <a href="/clinical/observations.php"
+        class="sidebar-link <?= clinicalNavActive(['observations.php', 'record-observation.php']) ?>">
             <span class="nav-icon">♡</span>
             <span class="nav-text">Clinical Observations</span>
-            <small>Soon</small>
-        </span>
+        </a>
+
 
         <span class="sidebar-link disabled">
             <span class="nav-icon">🕘</span>
