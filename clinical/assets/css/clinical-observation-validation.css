@@ -1,0 +1,50 @@
+/* Validation feedback only; does not change existing clinical layout. */
+.ob-page .ob-review-warning {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  border: 1px solid #d9aa51;
+  border-left: 4px solid #b87812;
+  border-radius: 9px;
+  background: #fff8eb;
+  color: #6f4b14;
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+.ob-page .ob-review-warning strong { display: block; margin-bottom: 4px; font-size: 13px; }
+.ob-page .ob-review-warning p { margin: 5px 0; }
+.ob-page .ob-confirm-review {
+  margin-top: 16px;
+  padding: 11px 13px;
+  border-radius: 8px;
+  border: 1px solid #d9aa51;
+  background: #fffaf1;
+}
+.ob-page .ob-confirm-review label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  line-height: 1.55;
+  cursor: pointer;
+  font-size: 12.5px;
+}
+.ob-page .ob-confirm-review input[type="checkbox"] {
+  flex: none;
+  width: 16px;
+  min-height: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+  accent-color: #8d600e;
+}
+.ob-review-tag {
+  display: inline-block;
+  margin: 5px 0 0;
+  padding: 3px 7px;
+  border: 1px solid #dab86f;
+  border-radius: 6px;
+  color: #785119;
+  background: #fff7e4;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.35;
+  white-space: normal;
+}
