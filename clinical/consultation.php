@@ -18,6 +18,7 @@
         <div class="cc-alert cc-alert-success" role="status"><?= ccH($flash['message']) ?></div>
     <?php endif; ?>
 
+    
     <section class="clinical-card">
         <div class="clinical-card-heading">
             <div><h2><?= ccH($visit['first_name'] . ' ' . $visit['last_name']) ?></h2>
@@ -34,6 +35,7 @@
         </dl>
     </section>
 
+    <!-- Display the current consultation form or read-only view, depending on the user's authorization and the visit's status. -->
     <section class="clinical-card" aria-labelledby="cc-work-title">
         <div class="clinical-card-heading">
             <div>
@@ -57,6 +59,8 @@
                 (<?= ccH($active['professional_role']) ?>).
             </p>
 
+
+            <!-- Display the consultation form if the current user is authorized to edit it. Otherwise, show a read-only view. -->
             <?php if ($canEdit): ?>
                 <form class="cc-form" method="post" action="/clinical/consultation.php?visit_id=<?= $visitId ?>">
                     <input type="hidden" name="csrf_token" value="<?= ccH($_SESSION['clinical_consultation_csrf']) ?>">
@@ -67,6 +71,7 @@
                         <div><label for="cc-plan">Treatment / Care Plan</label><textarea id="cc-plan" name="treatment_plan" rows="3" maxlength="5000"><?= ccH($active['treatment_plan']) ?></textarea></div>
                         <div><label for="cc-notes">Additional Clinical Notes</label><textarea id="cc-notes" name="notes" rows="4" maxlength="10000"><?= ccH($active['notes']) ?></textarea></div>
                     </div>
+
                     <p class="cc-hint">Document only care you are professionally authorized to provide. This module does not authorize prescribing medication.</p>
                     <div class="cc-next">
                         <label for="cc-next-step">After completing this consultation</label>
@@ -76,6 +81,7 @@
                             <option value="handoff">Patient needs another clinician — return to Waiting</option>
                         </select>
                     </div>
+
                     <div class="cc-actions">
                         <button class="cc-btn cc-btn-outline" type="submit" name="action" value="save">Save Draft</button>
                         <button class="cc-btn cc-btn-primary" type="submit" name="action" value="complete" onclick="return confirm('Complete this consultation and apply the selected visit outcome? Completed records cannot be edited here.');">Complete Consultation</button>
@@ -90,12 +96,14 @@
                     <div><h3>Care Plan</h3><p><?= nl2br(ccH($active['treatment_plan'] ?: 'No notes yet')) ?></p></div>
                     <div><h3>Additional Notes</h3><p><?= nl2br(ccH($active['notes'] ?: 'No notes yet')) ?></p></div>
                 </div>
+
             <?php endif; ?>
         <?php else: ?>
             <p class="cc-alert cc-alert-neutral">This visit is <?= ccH($visit['visit_status']) ?> and cannot start another consultation. Its recorded history remains available below.</p>
         <?php endif; ?>
     </section>
 
+    <!-- Display the patient's previous consultations and nursing observations, if any exist. -->
     <section class="clinical-card">
         <div class="clinical-card-heading"><div><h2>Previous Consultations</h2><p>Up to 12 most recent completed records for this patient.</p></div></div>
         <?php if ($history): ?>
@@ -120,6 +128,7 @@
         <?php endif; ?>
     </section>
 
+    <!-- Display the most recent nursing observations for this patient, if any exist. -->
     <section class="clinical-card">
         <div class="clinical-card-heading"><div><h2>Previous Nursing Observations</h2><p>Up to 8 most recent observation records.</p></div></div>
         <?php if ($observations): ?>
