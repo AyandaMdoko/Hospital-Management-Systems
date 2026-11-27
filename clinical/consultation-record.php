@@ -63,6 +63,7 @@ try {
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/sidebar.php';
 ?>
+
 <main class="clinical-main ch-page">
   <div class="clinical-page-heading">
     <div>
@@ -72,6 +73,8 @@ require_once __DIR__ . '/includes/sidebar.php';
     </div>
     <a class="ch-btn ch-secondary" href="/clinical/consultation-history.php">Back to Consultation History</a>
   </div>
+
+  <!-- Display the consultation details in a read-only format. -->
   <section class="clinical-card ch-card">
     <div class="clinical-card-heading">
       <div>
@@ -80,25 +83,31 @@ require_once __DIR__ . '/includes/sidebar.php';
       </div>
       <span class="ch-status">Completed</span>
     </div>
+
     <dl class="ch-facts">
       <div>
         <dt>Consultation ID</dt>
         <dd>#<?= (int)$consultation['consultation_id'] ?></dd>
       </div>
+
       <div>
         <dt>Visit ID</dt>
         <dd><?= $consultation['visit_id'] ? '#' . (int)$consultation['visit_id'] : 'Legacy record (no visit link)' ?></dd>
       </div>
+
       <div>
         <dt>Consultation date</dt>
         <dd><?= crDate($consultation['consultation_date']) ?></dd>
       </div>
+
       <div>
         <dt>Attending professional</dt>
         <dd><?= crH($consultation['clinician_first'] . ' ' . $consultation['clinician_last']) ?> (<?= crH($consultation['professional_role']) ?>)</dd>
       </div>
+
     </dl>
   </section>
+
   <section class="clinical-card ch-card">
     <div class="clinical-card-heading">
       <div>
@@ -106,27 +115,33 @@ require_once __DIR__ . '/includes/sidebar.php';
         <p>Original completed entries are displayed without editing controls.</p>
       </div>
     </div>
+
     <div class="ch-notes">
       <div>
         <h3>Symptoms / Assessment</h3>
         <p><?= nl2br(crH($consultation['symptoms'] ?: 'Not recorded')) ?></p>
       </div>
+
       <div>
         <h3>Diagnosis / Clinical Impression</h3>
         <p><?= nl2br(crH($consultation['diagnosis'] ?: 'Not recorded')) ?></p>
       </div>
+
       <div>
         <h3>Treatment / Care Plan</h3>
         <p><?= nl2br(crH($consultation['treatment_plan'] ?: 'Not recorded')) ?></p>
       </div>
+
       <div>
         <h3>Additional Clinical Notes</h3>
         <p><?= nl2br(crH($consultation['notes'] ?: 'Not recorded')) ?></p>
       </div>
+
     </div>
     <div class="ch-actions">
       <a class="ch-btn ch-secondary" href="/clinical/patient-details.php?patient_id=<?= (int)$consultation['patient_id'] ?>">View Full Patient Medical History</a>
     </div>
+    
   </section>
   <p class="ch-footnote">Access to this consultation is audited. Corrections to completed clinical records require a separate, traceable amendment process.</p>
 </main>
