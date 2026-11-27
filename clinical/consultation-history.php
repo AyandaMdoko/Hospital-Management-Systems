@@ -4,7 +4,7 @@
  * Access matches clinical/patient-details.php: active visit or clinician's
  * earlier consultation. No data changes and no access to draft notes.
  */
-require_once __DIR__ . '/../includes/clinical-auth.php';
+require_once __DIR__ . '/includes/clinical-auth.php';
 require_once __DIR__ . '/../config/dbconnect.php';
 header('Cache-Control: no-store, private');
 header('Pragma: no-cache');
@@ -143,7 +143,7 @@ require_once __DIR__ . '/includes/sidebar.php';
     <div class="ch-total" role="status">
       <?= $total ?> completed consultation<?= $total === 1 ? '' : 's' ?> found.
     </div>
-    
+
     <div class="clinical-table-scroll">
       <table class="clinical-table ch-table">
         <thead>

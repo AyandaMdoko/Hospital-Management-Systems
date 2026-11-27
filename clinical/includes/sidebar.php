@@ -46,11 +46,12 @@ function clinicalNavActive($pages = []) {
         </a>
 
 
-        <span class="sidebar-link disabled">
+       <a href="/clinical/consultation-history.php"
+        class="sidebar-link <?= clinicalNavActive(['consultation-history.php', 'consultation-record.php']) ?>">
             <span class="nav-icon">🕘</span>
             <span class="nav-text">Consultation History</span>
-            <small>Soon</small>
-        </span>
+        </a>
+       
 
     </nav>
 

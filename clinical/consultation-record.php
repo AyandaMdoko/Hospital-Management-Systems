@@ -1,6 +1,6 @@
 <?php
 /** Read-only single consultation, independently checked and audited. */
-require_once __DIR__ . '/../includes/clinical-auth.php';
+require_once __DIR__ . '/includes/clinical-auth.php';
 require_once __DIR__ . '/../config/dbconnect.php';
 header('Cache-Control: no-store, private');
 header('Pragma: no-cache');
