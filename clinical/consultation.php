@@ -49,12 +49,14 @@
                 <input type="hidden" name="action" value="start">
                 <button class="cc-btn cc-btn-primary" type="submit">Start Consultation</button>
             </form>
+
         <?php elseif ($active): ?>
             <p class="cc-hint">
                 Consultation #<?= (int) $active['consultation_id'] ?> started by
                 <strong><?= ccH($active['staff_first'] . ' ' . $active['staff_last']) ?></strong>
                 (<?= ccH($active['professional_role']) ?>).
             </p>
+
             <?php if ($canEdit): ?>
                 <form class="cc-form" method="post" action="/clinical/consultation.php?visit_id=<?= $visitId ?>">
                     <input type="hidden" name="csrf_token" value="<?= ccH($_SESSION['clinical_consultation_csrf']) ?>">
@@ -80,6 +82,7 @@
                     </div>
                 </form>
             <?php else: ?>
+                
                 <p class="cc-alert cc-alert-neutral">This consultation is in progress. The responsible clinician must finish or hand over their work before another consultation can start.</p>
                 <div class="cc-readonly-grid">
                     <div><h3>Symptoms / Assessment</h3><p><?= nl2br(ccH($active['symptoms'] ?: 'No notes yet')) ?></p></div>
