@@ -1,0 +1,237 @@
+/* Consultation History */
+.ch-page {
+  .ch-card {
+    padding: 20px;
+  }
+
+  .ch-search {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 16px 0;
+
+    & > div {
+      min-width: 190px;
+      flex: 0 1 210px;
+    }
+
+    .ch-search-text {
+      flex: 1 1 240px;
+    }
+
+    & label:not(.ch-mine) {
+      display: block;
+      margin: 0 0 5px;
+      color: #516780;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    & input[type="search"],
+    & select {
+      display: block;
+      background: #fff;
+      border: 1px solid #cdd9e6;
+      border-radius: 8px;
+      width: 100%;
+      height: 38px;
+      padding: 7px 10px;
+      font: inherit;
+      font-size: 13px;
+      color: #243b53;
+    }
+
+    .ch-mine {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+      font-size: 12.5px;
+      color: #344d67;
+      cursor: pointer;
+    }
+  }
+
+  & .ch-search input:focus-visible,
+  & .ch-search select:focus-visible,
+  & .ch-btn:focus-visible,
+  & .ch-pagination a:focus-visible {
+    outline: 3px solid #7fb2e5;
+    outline-offset: 2px;
+  }
+
+  .ch-btn {
+    min-height: 36px;
+    padding: 8px 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    border: 1px solid transparent;
+    text-decoration: none;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: background .18s ease, border-color .18s ease, box-shadow .18s ease;
+
+    &.ch-primary {
+      color: white;
+      background: #1766aa;
+      border-color: #1766aa;
+
+      &:hover {
+        background: #104e87;
+        border-color: #104e87;
+      }
+    }
+
+    &.ch-secondary {
+      background: #f5f9fe;
+      color: #1a5b96;
+      border-color: #ccdfef;
+
+      &:hover {
+        background: #e5f0fb;
+        border-color: #8ebbe0;
+      }
+    }
+  }
+
+  .ch-table {
+    font-size: 12.5px;
+
+    & th {
+      white-space: nowrap;
+    }
+
+    & td {
+      vertical-align: middle;
+    }
+  }
+
+  .ch-subline {
+    display: block;
+    font-size: 11px;
+    color: #71839a;
+    margin-top: 3px;
+  }
+
+  .ch-total {
+    color: #5b7187;
+    font-size: 12px;
+    margin: 12px 0;
+  }
+
+  .ch-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    margin-top: 18px;
+    font-size: 12.5px;
+
+    & a {
+      color: #1766aa;
+      font-weight: 600;
+    }
+  }
+
+  .ch-footnote {
+    font-size: 12px;
+    color: #687e91;
+    line-height: 1.6;
+    margin: 12px 0 24px;
+  }
+
+  .ch-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 14px 0 0;
+
+    & div {
+      background: #f6f9fc;
+      border: 1px solid #e7eef5;
+      border-radius: 9px;
+      padding: 12px;
+    }
+
+    & dt {
+      font-size: 11px;
+      color: #698096;
+      margin-bottom: 5px;
+    }
+
+    & dd {
+      font-size: 13px;
+      color: #263d53;
+      margin: 0;
+      font-weight: 600;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  .ch-status {
+    background: #e7f7ed;
+    border-radius: 999px;
+    color: #24704a;
+    font-size: 11px;
+    padding: 6px 10px;
+    font-weight: 700;
+  }
+
+  .ch-notes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+
+    & > div {
+      padding: 14px;
+      border-radius: 9px;
+      border: 1px solid #e2eaf3;
+      background: #fbfdff;
+      min-width: 0;
+    }
+
+    & h3 {
+      color: #27445f;
+      margin: 0 0 8px;
+      font-size: 13px;
+    }
+
+    & p {
+      font-size: 12.5px;
+      color: #3d5265;
+      line-height: 1.7;
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+  }
+
+  .ch-actions {
+    margin-top: 20px;
+  }
+
+  @media (max-width: 720px) {
+    & .ch-facts,
+    & .ch-notes {
+      grid-template-columns: 1fr;
+    }
+
+    .ch-card {
+      padding: 15px;
+    }
+
+    .ch-search > div {
+      flex: 1 1 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ch-btn {
+      transition: none;
+    }
+  }
+}
