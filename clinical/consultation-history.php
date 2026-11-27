@@ -98,6 +98,7 @@ function chUrl(int $p, string $search, string $role, bool $mine): string {
 require_once __DIR__ . '/includes/header.php';
 require_once __DIR__ . '/includes/sidebar.php';
 ?>
+
 <main class="clinical-main ch-page">
   <div class="clinical-page-heading">
     <div>
@@ -108,6 +109,7 @@ require_once __DIR__ . '/includes/sidebar.php';
       <p>Read-only completed consultations for patients under your authorized care.</p>
     </div>
   </div>
+
   <section class="clinical-card ch-card">
     <div class="clinical-card-heading">
       <div>
@@ -115,11 +117,13 @@ require_once __DIR__ . '/includes/sidebar.php';
         <p>Search patient name or ID, filter by attending professional, or show only consultations you performed.</p>
       </div>
     </div>
+
     <form method="get" action="/clinical/consultation-history.php" class="ch-search">
       <div class="ch-search-text">
         <label for="ch-search">Patient name or ID</label>
         <input id="ch-search" type="search" name="search" maxlength="80" placeholder="e.g. Demo ClinicalTest or 12" value="<?= chH($search) ?>">
       </div>
+
       <div>
         <label for="ch-role">Attending professional</label>
         <select id="ch-role" name="role">
@@ -128,15 +132,18 @@ require_once __DIR__ . '/includes/sidebar.php';
           <option value="Nurse"<?= $role === 'Nurse' ? ' selected' : '' ?>>Nurse</option>
         </select>
       </div>
+
       <label class="ch-mine"><input type="checkbox" name="mine" value="1"<?= $mine ? ' checked' : '' ?>> My consultations only</label>
       <button class="ch-btn ch-primary" type="submit">Search</button>
       <?php if ($search !== '' || $role !== '' || $mine): ?>
         <a class="ch-btn ch-secondary" href="/clinical/consultation-history.php">Clear</a>
       <?php endif; ?>
     </form>
+
     <div class="ch-total" role="status">
       <?= $total ?> completed consultation<?= $total === 1 ? '' : 's' ?> found.
     </div>
+    
     <div class="clinical-table-scroll">
       <table class="clinical-table ch-table">
         <thead>
@@ -168,6 +175,7 @@ require_once __DIR__ . '/includes/sidebar.php';
         </tbody>
       </table>
     </div>
+
     <?php if ($pages > 1): ?>
       <nav class="ch-pagination" aria-label="Consultation history pages">
         <?php if ($page > 1): ?>
