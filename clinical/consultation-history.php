@@ -156,12 +156,14 @@ require_once __DIR__ . '/includes/sidebar.php';
             <th>Action</th>
           </tr>
         </thead>
+
         <tbody>
           <?php if (!$consultations): ?>
             <tr>
               <td colspan="6">No completed consultations matched your authorized search.</td>
             </tr>
           <?php endif; ?>
+          
           <?php foreach ($consultations as $c): ?>
             <tr>
               <td><strong>#<?= (int)$c['consultation_id'] ?></strong></td>
